@@ -1,0 +1,11 @@
+// 331CA - Mihai Daniel Soare
+
+For doing this assignment I have used the following resources:
+
+- manual page of the libc function / syscall
+- for string functions I have used the "cplusplus.com"
+- i have read syscall and memory allocation chapters from
+"The Programming Linux Interface"
+
+For checking linter errors I have used: 
+"https://github.com/torvalds/linux/blob/master/scripts/checkpatch.pl"

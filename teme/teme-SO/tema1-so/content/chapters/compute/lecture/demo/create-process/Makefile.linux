@@ -1,0 +1,2 @@
+BINARIES = fork fork_exec multiple_forks posix_spawn system
+include ../../../../../common/makefile/multiple.mk

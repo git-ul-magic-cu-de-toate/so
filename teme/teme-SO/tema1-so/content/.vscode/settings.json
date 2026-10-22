@@ -1,0 +1,23 @@
+{
+    "files.associations": {
+        "errno.h": "c",
+        "stdarg.h": "c",
+        "*.tcc": "c",
+        "exception": "c",
+        "memory_resource": "c",
+        "fstream": "c",
+        "iosfwd": "c",
+        "new": "c",
+        "ostream": "c",
+        "sstream": "c",
+        "streambuf": "c",
+        "stdio.h": "c",
+        "io.h": "c",
+        "stat.h": "c",
+        "types.h": "c",
+        "syscall.h": "c",
+        "fcntl.h": "c",
+        "unistd.h": "c",
+        "resource.h": "c"
+    }
+}

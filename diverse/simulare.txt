@@ -1,0 +1,102 @@
+Cand se intampla swap in/out?
+Care e rolul TLB ului?
+Ce inseamna zero copy
+Cate apeluri de sistem exista intr un so? sute
+Ce mecanisme de sincronizare nu pot folosi daca procesele nu sunt inrudite? (pipe anonim, mutex, variabile de conditie)
+Putem folosi sem anonime pt 2 procese neinrudine atunci cand sem se afla in zona de memorie partajata
+Mem partajata n are nev ca procesele sa fie inrudite
+Cand fol procese, sincronizarea e facuta folosind primitive
+
+
+Acelasi thread apeleaza si lock si unlock pe mutex
+Mutexurile sunt pt acces exclusiv la mem
+Semafoarele sunt pentru notificare - fac sincronizare
+La pb producator-consumator ai nev de mutex sau var conditie? Var cond sau semafoare ca sa se notifice intre ele. E nev si de mutex pt ca au buffer la comun
+Cel mai rapid mecanism pt acces exclusiv? Op atomice, apoi spinlock
+Spinlock mai rpd decat mutex pt ca e implem mai usor cu busy waiting + un lock pe un spinlock NU cauzeaza apel de sistem, dar pe mutex DA
+Crearea threadurilor si proceselor cauzeaza apel de sistem
+Ce apel de sistem sare la entry point ul unei app? exec
+Fork - copy on write
+Malloc de 1mb nu aloca initial nimic pe pag fizica
+*a = 4 -> 3 posibile page fault ( a, *a, *a din zona de cod)
+Exploit -> se suprascrie peste zona de date cu speranta de a aj in zona de cod
+Double buffering in ce context? 
+Ce e buffer cache?
+Dc write pe un fisier nu blocheaza procesul de obicei? Op write scrie catre bufferul intern al nucleului
+Care e dezavantajul folosirii semnalelor pt comunicare intre app/procese? Intreruperea fluxului de executie pt rularea handle ului
+
+
+libc contine wrappere peste apeluri de sistem
+thread local storage -> unic per thread
+Exista terminated pt ca chiar daca s a terminat threadul, tot ocupa resurse. Sunt eliberate cand e notificat procesul parinte
+Copy on write face page fault
+Avantajul io asincron?
+Ce se intoarce la un apel asincron (care e val de retur)? 0 succes, -1 eroare
+Read pe socket intoarce 0? Cand conexiunea s a inchis.
+
+
+Adresa virt->adresa fiz -> maparea din tlb / tabela de pagini. Daca adresa nu e in tlb se fac 2 accesuri la memorie. Daca e in tlb o data.
+malloc foloseste brk si mmap. care cand si dc?
+Pe zona .text si .rodata nu se va face niciodata cow
+Ce face o bariera? Asteapta ca toate threadurile sa ajunga la un anumit punct din program ca sa poata continua
+Socket unix cand aplicatiile lucreaza local - sincronizare built in -> comunicarea cu socketul e fta prin kernel
+Mem partajata - pt sincronizare mai granularizata
+Socket unix - 2 buffere: primire si trimitere
+Socket de retea - gandit sa functioneze pe 2 sist diferite -> fiecare are cate 2
+Write nu prea e blocant ca scrie intr un buffer.
+Ce contine un file control block? cursorul, metadate, permisiuni
+Cand faci dup pe un fisier ce se intampla?
+a=5 -> tranzitie in kernel mode -> cand ai page fault
+Cand se blocheaza write pe socket? Daca bufferul socketului e plin
+Cand se blocheaza read pe fisier? Cand bufferul intern din kernel e gol
+
+
+Op blocanta leg de io - read / neleg de io - pthread_join
+Echivalentul pthread_join pt ptocese -> pid_wait
+Dc trebuie ca procesul parinte sa il astepte pe cel copil care s a terminat?
+Cand creezi un proces se aloca in mem fizica spatiu pt tabela de pagini
+Cat de mare e vas 2^32 sau 2^48
+Operatii care populeaza fd table? open, dup, socket, accept, pipe
+Op read si write sunt de tip memcpy pt ca tot ce fac e sa scrie/citeasca intr un buffer din kernel space in user space
+Zero copy - nu mai facem aceasta schimbare de context si se trimite doar prin kernel space . ex: mmap, send_file
+Dezavantajul mmap -> trb sa stii de dinainte dim fisierului. daca dim variaza e naspa
+Ce e sparse file?
+Bibl statica e incorporata in executabil -> poate computerul care foloseste executabilul nu are biblioteca respectibva instalata
+Bibl dinamica e linkata la run time 
+Printf face apel de sistem doar la \n
+Ce au in comun mecanimesmele de comunicare intre procese neinrudite? au file descriptori
+
+
+Fork dureaza mai mult decat exec -> creeaza pcb nou, copiaza tot vas
+Exec foloseste demand paging
+TLB miss -> adresa virtuala nu e in tlb dar e in vas sau adresa virtuala nu e valida
+Buffer cache = intermediar intre user space si disk, rezida in kernel space. E folosit la read, write.
+Dim fd table 1024
+Ca sa face shared memory primul apel care trb facut e shm_open sau open, apoi ftruncate
+Tranzitie user mode->kernel mode fara apel de sistem :  la page fault
+
+
+PCB e in kernel space
+SO trimite semnal: segfault
+ce fisiere se incarca mereu cu mmap? bibliotecile dinamice
+apel de bibl statica e mai rapid
+io multiplexing -> epoll
+cel mai rapid mod de ipc -> mem partajata, nu face syscall
+
+
+server web de obicei io intensive
+cow copiaza pagina cu pagina
+accept - accepta o conexiune cu un socket
+close inchide legatura catre fd. structura spre care se pointeaza e eliberata doar atunci cand nu mai pointeaza nimic spre ea
+
+
+
+
+
+
+
+
+
+
+
+

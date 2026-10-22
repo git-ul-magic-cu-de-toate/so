@@ -1,0 +1,12 @@
+--2022-12-28 10:51:07--  http://localhost:8888/static/small00.dat
+Resolving localhost (localhost)... ::1, 127.0.0.1
+Connecting to localhost (localhost)|::1|:8888... failed: Connection refused.
+Connecting to localhost (localhost)|127.0.0.1|:8888... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: unspecified
+Saving to: ‘small00.dat’
+
+     0K ..                                                     2.00K=1.0s
+
+2022-12-28 10:51:08 (2.00 KB/s) - ‘small00.dat’ saved [2048]
+

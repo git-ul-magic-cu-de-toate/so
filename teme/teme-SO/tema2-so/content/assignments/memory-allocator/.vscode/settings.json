@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "concepts": "c",
+        "cstdio": "c",
+        "type_traits": "c",
+        "new": "c",
+        "typeinfo": "c",
+        "helpers.h": "c",
+        "unistd.h": "c",
+        "sup": "c"
+    }
+}

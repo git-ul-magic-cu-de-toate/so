@@ -1,0 +1,249 @@
+stages:
+  - make_assets
+  - embed_reveal
+  - docusaurus
+
+build_dir: /build
+output_type: last
+output_dir: /output
+
+make_assets:
+  plugin: command
+  options:
+    command: make
+    locations:
+      - content/chapters/software-stack/lecture
+      - content/chapters/data/lecture
+      - content/chapters/compute/lecture
+      - content/chapters/io/lecture
+      - content/chapters/app-interact/lecture
+    args:
+      - all
+
+embed_reveal:
+  plugin: reveal_embed
+  options:
+    target: docusaurus
+    extension: mdx
+    build:
+      Software-Stack: slides/Software-Stack
+      Data: slides/Data
+      Compute: slides/Compute
+      IO: slides/IO
+      Application-Interaction: slides/Application-Interaction
+
+docusaurus:
+  plugin: docusaurus
+  options:
+    course_name: SO
+    sidebar: js
+    structure:
+      - Introduction:
+        - Intro:
+            name: README
+            location: content/landing-page
+      - Lecture:
+        - Software Stack:
+            name: Software-Stack
+            location: /build/embed_reveal/Software-Stack
+        - Data:
+            name: Data
+            location: /build/embed_reveal/Data
+        - Compute:
+            name: Compute
+            location: /build/embed_reveal/Compute
+        - IO:
+            name: IO
+            location: /build/embed_reveal/IO
+        - Application Interaction:
+            name: Application-Interaction
+            location: /build/embed_reveal/Application-Interaction
+      - Lab:
+        - Setting up the Lab Environment:
+            location: content/misc
+            name: lab-setup
+        - Software Stack:
+          - Overview:
+              location: content/chapters/software-stack/lab
+              name: content/overview
+          - Modern Software Stacks:
+              location: content/chapters/software-stack/lab
+              name: content/modern-sw-stack
+          - Basic System Calls:
+              location: content/chapters/software-stack/lab
+              name: content/basic-syscall
+          - System Call Wrapper:
+              location: content/chapters/software-stack/lab
+              name: content/syscall-wrapper
+          - Common Functions:
+              location: content/chapters/software-stack/lab
+              name: content/common-functions
+          - Libc:
+              location: content/chapters/software-stack/lab
+              name: content/libc
+          - Static-dynamic:
+              location: content/chapters/software-stack/lab
+              name: content/static-dynamic
+          - Libcall-Syscall:
+              location: content/chapters/software-stack/lab
+              name: content/libcall-syscall
+          - High-Level Languages:
+              location: content/chapters/software-stack/lab
+              name: content/high-level-lang
+          - App Investigation:
+              location: content/chapters/software-stack/lab
+              name: content/app-investigate
+          - Arena:
+              location: content/chapters/software-stack/lab
+              name: content/arena
+        - Data:
+          - Overview:
+              location: content/chapters/data/lab
+              name: content/overview
+          - Working with Memory:
+              location: content/chapters/data/lab
+              name: content/working-memory
+          - Process Memory:
+              location: content/chapters/data/lab
+              name: content/process-memory
+          - Investigate Memory:
+              location: content/chapters/data/lab
+              name: content/investigate-memory
+          - Memory Security:
+              location: content/chapters/data/lab
+              name: content/memory-security
+          - Arena:
+              location: content/chapters/data/lab
+              name: content/arena
+        - Compute:
+          - Overview:
+              location: content/chapters/compute/lab
+              name: content/overview
+          - Benchmarks:
+              location: content/chapters/compute/lab
+              name: content/benchmarks
+          - Processes:
+              location: content/chapters/compute/lab
+              name: content/processes
+          - Threads:
+              location: content/chapters/compute/lab
+              name: content/threads
+          - Processes-threads-apache2:
+              location: content/chapters/compute/lab
+              name: content/processes-threads-apache2
+          - Copy-on-Write:
+              location: content/chapters/compute/lab
+              name: content/copy-on-write
+          - Synchronization:
+              location: content/chapters/compute/lab
+              name: content/synchronization
+          - Scheduling:
+              location: content/chapters/compute/lab
+              name: content/scheduling
+          - Arena:
+              location: content/chapters/compute/lab
+              name: content/arena
+        - I/O:
+          - Overview:
+              location: content/chapters/io/lab
+              name: content/overview
+          - File Handlers:
+              location: content/chapters/io/lab
+              name: content/file-handlers
+          - File Descriptors:
+              location: content/chapters/io/lab
+              name: content/file-descriptors
+          - Redirections:
+              location: content/chapters/io/lab
+              name: content/redirections
+          - Pipes:
+              location: content/chapters/io/lab
+              name: content/pipes
+          - Local I/O in Action:
+              location: content/chapters/io/lab
+              name: content/local-io-in-action
+          - Remote I/O:
+              location: content/chapters/io/lab
+              name: content/remote-io
+          - Networking 101:
+              location: content/chapters/io/lab
+              name: content/networking-101
+          - Client-Server Model:
+              location: content/chapters/io/lab
+              name: content/client-server-model
+          - Beyond Network Sockets:
+              location: content/chapters/io/lab
+              name: content/beyond-network-sockets
+          - File Mappings:
+              location: content/chapters/io/lab
+              name: content/file-mappings
+          - I/O Internals:
+              location: content/chapters/io/lab
+              name: content/io-internals
+          - Zero-Copy:
+              location: content/chapters/io/lab
+              name: content/zero-copy
+          - Asynchronous I/O:
+              location: content/chapters/io/lab
+              name: content/async-io
+          - I/O Multiplexing:
+              location: content/chapters/io/lab
+              name: content/io-multiplexing
+          - Arena:
+              location: content/chapters/io/lab
+              name: content/arena
+        - Application Interaction:
+          - Overview:
+              location: content/chapters/app-interact/lab
+              name: content/overview
+          - Time Server:
+              location: content/chapters/app-interact/lab
+              name: content/time-server
+          - Password Cracker:
+              location: content/chapters/app-interact/lab
+              name: content/password-cracker
+          - The X Window System:
+              location: content/chapters/app-interact/lab
+              name: content/x-window-system
+          - D-Bus:
+              location: content/chapters/app-interact/lab
+              name: content/dbus
+          - OS Cloud:
+              location: content/chapters/app-interact/lab
+              name: content/os-cloud
+          - Arena:
+              location: content/chapters/app-interact/lab
+              name: content/arena
+      - Assignments:
+        - Mini Libc:
+            location: content/assignments/mini-libc
+            name: README
+        - Memory Allocator:
+            location: content/assignments/memory-allocator
+            name: README
+        - Parallel Graph:
+            location: content/assignments/parallel-graph
+            name: README
+        - Mini Shell:
+            location: content/assignments/minishell
+            name: README
+        - Asynchronous Web Server:
+            location: content/assignments/async-web-server
+            name: README
+    static_assets:
+      - slides/Compute: /build/make_assets/content/chapters/compute/lecture/_site
+      - slides/Software-Stack: /build/make_assets/content/chapters/software-stack/lecture/_site
+      - slides/Data: /build/make_assets/content/chapters/data/lecture/_site
+      - slides/IO: /build/make_assets/content/chapters/io/lecture/_site
+      - slides/Application-Interaction: /build/make_assets/content/chapters/app-interact/lecture/_site
+    config_meta:
+      title: Operating Systems
+      url: http://localhost/
+      baseUrl: /operating-systems/
+      onBrokenLinks: warn
+      onBrokenMarkdownLinks: warn
+    config_socials:
+      Main site: https://curs.upb.ro
+      OCW: https://ocw.cs.pub.ro/courses/so
+      Facebook: https://www.facebook.com/sisteme.de.operare/
+    copyright_string: SO Team
